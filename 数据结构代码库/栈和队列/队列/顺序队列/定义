@@ -1,0 +1,5 @@
+#define MaxSize 50 //定义队列中元素的最大个数
+typedef struct {
+        ElemType data[MaxSize]; //存放队列元素
+        int front, rear; //队头指针和队尾指针
+} SqQueue;

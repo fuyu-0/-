@@ -1,0 +1,15 @@
+
+LinkList CreateList1(LinkList &L){
+//从表尾到表头逆向建立单链表L，每次均在头结点之后插入元素
+    LNode *s;int x;
+    L=(LinkList)malloc(sizeof(LNode)); //创建头结点
+    L->next=NULL; //初始化为空链表
+    while(scanf(" d",&x) != EOF){ //循环输入
+        s=(LNode*)malloc(sizeof(LNode));//创建新结点
+        s->data=x;
+        s->next=L->next;
+        L->next=s; //将新结点插入表中，L为头指针
+        scanf(" d",&x);
+    }//while结束
+    return L;
+}

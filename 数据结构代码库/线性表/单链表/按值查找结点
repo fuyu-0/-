@@ -1,0 +1,8 @@
+
+LNode *LocateElem(LinkList L,ElemType e){
+//本算法查找单链表L(带头结点)中数据域值等于e的结点指针，否 则返回NULL
+    LNode *p=L->next;
+    while(p!=NULL&&p->data!=e)//从第1个结点开始查找data域为e的结点
+        p=p->next;
+    return p; //找到后返回该结点指针，否则返回NULL
+}

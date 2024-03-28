@@ -1,0 +1,37 @@
+(1)初始化
+void InitStack(&S){
+    //初始化栈
+    s.top=-1; //初始化栈顶指针
+}
+(2)判断空
+bool StackEmpty(S){
+    //判断栈是否为空
+    if (S.top == -1) //栈空
+        return true;
+    else //不空
+        return false;
+}
+(3)进栈
+bool Push(SqStack &S, ElemType x) {
+    //进栈操作
+    if (S.top == MaxSize - 1) //栈满，报错
+        return false;
+    S.data[++S.top] = x; //指针先加1，再入栈
+    return true;
+}
+ 
+bool Pop(SqStack &S, ElemType &x) {
+    //出栈操作
+    if (S.top == -1) //栈空，报错
+        return false;
+    x = S.data[S.top--]; //先出栈，指针再减1
+    return true;
+}
+ 
+bool GetTop(SqStack S, ElemType &x) {
+    //获取栈顶元素
+    if (S.top == -1) //栈空，报错
+        return false;
+    x = S.data[S.top]; //x记录栈顶元素
+    return true;
+}
