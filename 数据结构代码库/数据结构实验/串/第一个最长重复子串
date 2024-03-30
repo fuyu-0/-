@@ -1,0 +1,56 @@
+#include <iostream>  
+#include <string>  
+#include <vector>
+#include <algorithm>
+//#include "Customer.h"
+ 
+using namespace std;
+ 
+ 
+int mycmp(const void *p1, const void *p2)
+{
+	return strcmp(*(char**)p1, *(char**)p2);
+}
+ 
+int getLen(char *p, char *q)
+{
+	int ret = 0;
+	while ( *p && *p++ == *q++)
+		++ret;
+	return ret;
+}
+//最长重复子串，后缀数组
+int getMaxRepeatSubStr(string str)
+{
+	char *s = new char[str.length()+1];
+	for (int i = 0; i < str.length(); i++)
+		s[i] = str[i];
+	s[str.length()] = '\0';
+ 
+	int len = str.length();
+	char **suffix = new char*[len];
+	for (int i = 0; i < len; i++)
+		suffix[i] = s + i;
+	qsort(suffix, len, sizeof(char*), mycmp);
+	int maxlen = 0;
+	for (int i = 0; i < len - 1; i++)
+	{
+		int tmp = getLen(suffix[i], suffix[i + 1]);
+		if (tmp>maxlen)
+			maxlen = tmp;
+	}
+	delete s;
+	delete suffix;
+ 
+	return maxlen;
+}
+ 
+int main()
+{
+	string str;
+	while (cin >> str)
+	{
+		getMaxRepeatSubStr(str);
+	}
+	return 0;
+}
